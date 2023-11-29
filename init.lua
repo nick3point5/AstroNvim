@@ -21,3 +21,19 @@ if astronvim.default_colorscheme then
 end
 
 require("astronvim.utils").conditional_func(astronvim.user_opts("polish", nil, false), true)
+
+vim.opt.hlsearch = false
+-- vim.opt.shell = "C:/Windows/System32/WindowsPowerShell/v1.0/powershell.exe"
+vim.opt.scrolloff = 10
+
+vim.keymap.set("x", "<leader>p", [["_dP]])
+vim.keymap.set("n", "<C-d>", "<C-d>zz")
+vim.keymap.set("n", "<C-u>", "<C-u>zz")
+vim.keymap.set("n", "n", "nzzzv")
+vim.keymap.set("n", "N", "Nzzzv")
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+
+if vim.g.vscode then
+  vim.cmd.startinsert()
+end

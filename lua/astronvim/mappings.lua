@@ -453,4 +453,18 @@ maps.n["<leader>uw"] = { ui.toggle_wrap, desc = "Toggle wrap" }
 maps.n["<leader>uy"] = { ui.toggle_syntax, desc = "Toggle syntax highlighting (buffer)" }
 maps.n["<leader>uh"] = { ui.toggle_foldcolumn, desc = "Toggle foldcolumn" }
 
+maps.n["<leader>s"] = { ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>", desc = "Substitute word" }
+
+if vim.g.vscode then
+	function syntax_off()
+		local ts_avail, parsers = pcall(require, "nvim-treesitter.parsers")
+		if ts_avail and parsers.has_parser() then vim.cmd.TSBufDisable "highlight" end
+		vim.cmd.syntax "off"                  -- set vim.g.syntax_on = false
+	end
+	maps.n["<leader>s"] = { ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI", desc = "Substitute word" }
+	maps.n["zh"] = { syntax_off, desc = "Syntax highlight off" }
+else
+	maps.n["<leader>s"] = { ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>", desc = "Substitute word" }
+end
+
 utils.set_mappings(astronvim.user_opts("mappings", maps))

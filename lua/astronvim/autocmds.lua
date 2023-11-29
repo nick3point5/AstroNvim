@@ -329,6 +329,16 @@ autocmd({ "BufReadPost", "BufNewFile", "BufWritePost" }, {
   end,
 })
 
+if vim.g.vscode then
+	autocmd({ "WinEnter" }, {
+		desc = "Start VS code in insert mode",
+		callback = function(args)
+			vim.cmd "normal zh"
+			vim.cmd.startinsert()
+		end,
+	})
+end
+
 cmd(
   "AstroChangelog",
   function() require("astronvim.utils.updater").changelog() end,

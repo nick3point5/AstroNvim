@@ -48,7 +48,8 @@ require("lazy").setup(astronvim.user_opts("lazy", {
   performance = {
     rtp = {
       paths = astronvim.supported_configs,
-      disabled_plugins = { "tohtml", "gzip", "zipPlugin", "netrwPlugin", "tarPlugin" },
+      disabled_plugins = { "tohtml", "gzip", "zipPlugin", "tarPlugin" },
+    --   disabled_plugins = { "tohtml", "gzip", "zipPlugin", "netrwPlugin", "tarPlugin" },
     },
   },
   lockfile = vim.fn.stdpath "data" .. "/lazy-lock.json",
