@@ -37,3 +37,11 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 if vim.g.vscode then
   vim.cmd.startinsert()
 end
+
+local nvim_lsp = require("lspconfig")
+nvim_lsp.denols.setup {
+  -- Omitting some options
+  root_dir = nvim_lsp.util.root_pattern("deno.json"),
+
+}
+
