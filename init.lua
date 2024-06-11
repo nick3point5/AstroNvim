@@ -34,6 +34,24 @@ vim.keymap.set("n", "N", "Nzzzv")
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
+-- Map "jk" to Escape key in insert and visual mode
+vim.api.nvim_set_keymap('i', 'jk', '<Esc>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('v', 'jk', '<Esc>', { noremap = true, silent = true })
+
+-- Map "kj" to Escape key in insert and visual mode
+vim.api.nvim_set_keymap('i', 'kj', '<Esc>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('v', 'kj', '<Esc>', { noremap = true, silent = true })
+
+
+
 if vim.g.vscode then
   vim.cmd.startinsert()
 end
+
+local nvim_lsp = require("lspconfig")
+nvim_lsp.denols.setup {
+  -- Omitting some options
+  root_dir = nvim_lsp.util.root_pattern("deno.json"),
+
+}
+
